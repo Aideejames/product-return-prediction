@@ -1,5 +1,5 @@
 // Change this to your deployed backend URL when you host it
-const API_URL = "http://127.0.0.1:8000";
+const API_URL =  "https://product-return-prediction-thzn.onrender.com";
 
 const form = document.getElementById("order-form");
 const resultBox = document.getElementById("result");
