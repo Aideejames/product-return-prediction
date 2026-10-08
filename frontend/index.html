@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Return Risk Predictor — Ibong & Sons</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🛒 Return Risk Predictor</h1>
+    <p>Estimate the probability that a pre-shipment order will be returned.</p>
+  </header>
+
+  <main>
+    <form id="order-form">
+      <fieldset>
+        <legend>Product</legend>
+        <label>Category
+          <select name="product_category">
+            <option>Electronics</option>
+            <option>Fashion</option>
+            <option>Home</option>
+            <option>Beauty</option>
+            <option>Sports</option>
+            <option>Books</option>
+            <option>Toys</option>
+          </select>
+        </label>
+        <label>Sub-category <input name="sub_category" value="Laptops" /></label>
+        <label>Brand <input name="brand" value="Brand_15" /></label>
+        <label>Price (₹) <input type="number" step="0.01" name="product_price" value="1402.90" /></label>
+        <label>Discount % <input type="number" step="0.1" name="discount_percent" value="30.6" /></label>
+        <label>Rating <input type="number" step="0.1" name="product_rating" value="3.0" /></label>
+        <label>Review count <input type="number" name="review_count" value="71" /></label>
+        <label>Quantity <input type="number" name="quantity" value="4" /></label>
+        <label><input type="checkbox" name="fragile_item" /> Fragile item</label>
+        <label><input type="checkbox" name="warranty_available" checked /> Warranty available</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Historical signals</legend>
+        <label>Product return rate <input type="number" step="0.001" name="product_return_rate" value="0.183" /></label>
+        <label>Category return rate <input type="number" step="0.001" name="category_return_rate" value="0.075" /></label>
+        <label>Brand return rate <input type="number" step="0.001" name="brand_return_rate" value="0.177" /></label>
+        <label>Defect rate <input type="number" step="0.001" name="defect_rate" value="0.076" /></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Seller &amp; logistics</legend>
+        <label>Seller rating <input type="number" step="0.1" name="seller_rating" value="4.6" /></label>
+        <label>Seller return rate <input type="number" step="0.001" name="seller_return_rate" value="0.172" /></label>
+        <label>Fulfillment
+          <select name="fulfillment_type">
+            <option>Marketplace Fulfilled</option>
+            <option>Seller Fulfilled</option>
+          </select>
+        </label>
+        <label>Payment method
+          <select name="payment_method">
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+            <option>UPI</option>
+            <option>Wallet</option>
+            <option>COD</option>
+          </select>
+        </label>
+        <label>Shipping distance (km) <input type="number" step="0.1" name="shipping_distance_km" value="474.4" /></label>
+        <label><input type="checkbox" name="delayed_delivery" /> Delayed delivery</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Customer behaviour</legend>
+        <label><input type="checkbox" name="wishlist_before_purchase" /> Wishlisted before purchase</label>
+        <label>Page views <input type="number" name="product_page_views" value="12" /></label>
+        <label>Support calls <input type="number" name="customer_support_calls" value="0" /></label>
+        <label>Chat interactions <input type="number" name="chat_interactions" value="0" /></label>
+      </fieldset>
+
+      <button type="submit">Predict Return Risk</button>
+    </form>
+
+    <section id="result" class="hidden">
+      <h2>Prediction</h2>
+      <div class="gauge">
+        <div class="gauge-fill" id="gauge-fill"></div>
+      </div>
+      <p><strong>Return probability:</strong> <span id="prob">—</span></p>
+      <p><strong>Decision:</strong> <span id="decision">—</span></p>
+      <p class="hint" id="hint"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
